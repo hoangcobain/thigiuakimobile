@@ -1,26 +1,33 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import image from "../assets/img/Star1.png";
 import imageBurger from "../assets/img/b.png";
 import imageHeart from "../assets/img/vh.png";
+import { useNavigation } from "@react-navigation/native";
 
 export default function BurgerItem() {
+  const navigation = useNavigation();
+  const navigateDeltail = () => {
+    navigation.navigate("Detail");
+  };
   return (
     <View style={styles.container}>
-      <View style={styles.backGround}>
-        <View style={styles.rating}>
-          <Image source={image} style={styles.image} />
-          <Text>4.2</Text>
+      <TouchableOpacity onPress={navigateDeltail}>
+        <View style={styles.backGround}>
+          <View style={styles.rating}>
+            <Image source={image} style={styles.image} />
+            <Text>4.2</Text>
+          </View>
+          <Image source={imageBurger} style={styles.imageBurger} />
         </View>
-        <Image source={imageBurger} style={styles.imageBurger} />
-      </View>
-      <View>
-        <Text>Peter Luger</Text>
-        <View style={styles.price}>
-          <Text>$44.00</Text>
-          <Image source={imageHeart} style={styles.imageHeart} />
+        <View>
+          <Text>Peter Luger</Text>
+          <View style={styles.price}>
+            <Text>$44.00</Text>
+            <Image source={imageHeart} style={styles.imageHeart} />
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
